@@ -34,12 +34,17 @@ int UDOscillator::solution(double t, const double *x, double *fx) const // speci
 {
     if(omega_F_==omega_) return specialSolution(t, x, fx);
     fx[0]=Fm_/(omega_F_*omega_F_-omega_*omega_)*(cos(omega_F_*t)-cos(omega_*t));
-    fx[1]=
+    fx[1]=Fm_/(omega_F_*omega_F_-omega_*omega_)*(-omega_*sin(omega_F_*t)+omega_F_*sin(omega_*t));
     return 0;
 }
 
-int UDOscillator::specialSolution(t, x, fx)
+int UDOscillator::specialSolution(t, x, fx) // when omega_F_=omega_
 {
+    if(omega_ != omega_F_)
+    {
+        cout<<"Calling nonspecial case because the forced frequency is not equal to the natural frequency"<<endl;
+	return solution(t, x, fx);
+    }
     fx[0]=Fm_*0.5/omega_*t*sin(omega_*t);
     return 0;
 }
