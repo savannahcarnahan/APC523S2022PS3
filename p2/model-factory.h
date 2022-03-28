@@ -16,7 +16,7 @@ public:
   virtual ~FactoryModel();
   
   static std::unique_ptr<Model> createModel
-	  (string model_type, double *params); 
+	  (string model_type); 
 };
 
 

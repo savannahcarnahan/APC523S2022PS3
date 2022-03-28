@@ -30,3 +30,17 @@ int UDOscillator::rhs(double t, const double *x, double *fx) const
   return 0;
 }
 
+int UDOscillator::solution(double t, const double *x, double *fx) const // specifically for x(0)=v(0)=0 
+{
+    if(omega_F_==omega_) return specialSolution(t, x, fx);
+    fx[0]=Fm_/(omega_F_*omega_F_-omega_*omega_)*(cos(omega_F_*t)-cos(omega_*t));
+    fx[1]=
+    return 0;
+}
+
+int UDOscillator::specialSolution(t, x, fx)
+{
+    fx[0]=Fm_*0.5/omega_*t*sin(omega_*t);
+    return 0;
+}
+

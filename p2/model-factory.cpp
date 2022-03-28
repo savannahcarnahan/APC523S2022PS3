@@ -13,9 +13,9 @@ FactoryModel::~FactoryModel() {}
 
 /* Add if/else statement here to add another type */
 std::unique_ptr<Model> FactoryModel::createModel
-        (string model_type, double *params)
+        (string model_type)
 {
-      if(model_type.compare("udo")==0) return std::make_unique<UDOscillator>(params);
+      if(model_type.compare("udo")==0) return std::make_unique<UDOscillator>();
       else {cout<<"invalid model type"<<endl; return NULL;}
     
 }
